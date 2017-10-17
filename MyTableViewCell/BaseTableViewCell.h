@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+
+typedef void(^ReturnValueBlock)(NSString *value);
+
 @class BaseTableViewCell;
 
 @protocol BaseTableViewCellDelegate <NSObject>
@@ -18,9 +21,11 @@
 
 @interface BaseTableViewCell : UITableViewCell
 
-@property (nonatomic,weak) __weak id <BaseTableViewCellDelegate> delegate;
 
-@property (nonatomic, strong) UIImageView * headView;
+@property (nonatomic,copy) ReturnValueBlock returnValueBlock;
+
+@property (nonatomic,weak) __weak id<BaseTableViewCellDelegate> delegate;
+
 @property (nonatomic, strong) UIButton * deleteBtn;
 
 
